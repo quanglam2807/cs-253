@@ -32,17 +32,67 @@ int main() {
 
     vector<GameInCart> cart;
     char ans = 'y';
+    
+    string myState;
+
     do {
-    /*
-     * Display the inventory
-     * Ask user to enter the game numer
-     * Ask user to enter the number of copies
-     * Keep asking if the uer wants to buy another one
-     * Don't crash if the user enters bogus numbers
-     * */
+        /*
+        * Display the inventory
+        * Ask user to enter the game numer
+        * Ask user to enter the number of copies
+        * Keep asking if the uer wants to buy another one
+        * Don't crash if the user enters bogus numbers
+        * */
+
+        displayInventory(games);
+
+        cout << "Which game would you like to buy (0 to skip)?" << endl;
+        
+        int gameId = 0;
+        int copies = 0;
+
+        gameId = readANumber(0, games.size());
+        if (gameId > 0) {
+            cout << "How many copies of " << games[gameId - 1].title << " would you like to buy?" << endl;
+            copies = readANumber(0, 10000);
+
+            GameInCart game;
+            game.title = games[gameId - 1].title;
+            game.publisher = games[gameId - 1].publisher;
+            game.platform = games[gameId - 1].platform;
+            game.releaseYear = games[gameId - 1].releaseYear;
+            game.price = games[gameId - 1].price;
+            game.copies = copies;
+
+            cart.push_back(game);
+        }
+
+        cout << "Do you want to buy more game (y/n): ";
+        cin >> ans;
+
+        if (ans != 'y') {
+            // Read state
+            char okState = 'n';
+            do {
+                cout << "Please enter your state's two-letter code: ";
+                cin >> myState;
+
+                for (State s: states) {
+                    if (s.code == myState) {
+                        okState = 'y';
+                        break;
+                    }
+                }
+            } while (okState == 'n');
+        }
     } while (ans == 'y');
+    
     double salesTax = 0;
-    readState(states, salesTax);
+    
+    readState(states, myState, salesTax);
+
+    cout << "Sales tax is " << setprecision(2) << fixed << salesTax << "%" << endl;
+
     displayCart(cart, salesTax, cartFileContent);
 
     inventoryFileContent.close();

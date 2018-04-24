@@ -16,6 +16,11 @@ struct Game {
     /*
      * Add members of the structure here
      * */
+    string title;
+    string publisher;
+    string platform;
+    int releaseYear;
+    double price;
 
     /* 
      * Display game properties (title, publisher, platform, release year, price) on the standard output (console)
@@ -27,12 +32,23 @@ struct State {
     /*
      * Add members of the structure here
      * */
+    string code;
+    double tax;
+    string fullName;
 };
 
 struct GameInCart {
     /*
      * Add members of the structure here
      * */
+
+    string title;
+    string publisher;
+    string platform;
+    int releaseYear;
+    double price;
+    int copies;
+
     /*
      * Display game properties (title, platform, price, quantity) on the standard output (console)
      * */
@@ -58,6 +74,6 @@ double displayCart(vector<GameInCart> cart, double salesTax, ofstream &fout);
 // Read an integer within the pecified boundaries
 int readANumber(int lower_bound, int upper_bound);
 // Read the state code
-void readState(vector<State> &states, double &salesTax);
+void readState(vector<State> &states, string code, double &salesTax);
 
 #endif
