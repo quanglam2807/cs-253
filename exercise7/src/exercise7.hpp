@@ -68,8 +68,8 @@ class Game {
         int rating;
     public:
         Game(string, int);
-        inline string getTitle() { /* Return the title value */ }
-        inline int getRating() { /* Return the rating value */ }
+        inline string getTitle() { return this->title;/* Return the title value */ }
+        inline int getRating() { return this->rating;/* Return the rating value */ }
         friend ostream& operator<<(ostream&, const Game&);
 };
 
@@ -80,8 +80,8 @@ class Song {
         string artist;
     public:
         Song(string, string);
-        inline string getTitle() { /* Return the title value */ }
-        inline string getArtist() { /* Return the artist value */ }
+        inline string getTitle() { return this->title;/* Return the title value */ }
+        inline string getArtist() { return this->artist;/* Return the artist value */ }
         friend ostream& operator<<(ostream&, const Song&);
 };
 
@@ -92,8 +92,8 @@ class Company {
         double stockPrice;
     public:
         Company(string, double);
-        inline double getStockPrice() { /* Return the stock price value */ }
-        inline void setStockPrice(double stockPrice) { /* Update the stock price value */ }
+        inline double getStockPrice() { return this->stockPrice;/* Return the stock price value */ }
+        inline void setStockPrice(double stockPrice) { this->stockPrice = stockPrice;/* Update the stock price value */ }
         friend ostream& operator<<(ostream&, const Company&);
 };
 
@@ -102,7 +102,7 @@ class College {
     private:
         string name;
         int rank;
-        inline void setRank(int rank) { /* Update rank value */ }
+        inline void setRank(int rank) { this->rank = rank;/* Update rank value */ }
     public:
         College(string, int);
         friend ostream& operator<<(ostream&, const College&);
@@ -117,12 +117,12 @@ class Laptop {
         string color;
     public:
         Laptop(string, double, string);
-        inline string getManufacturer() { /* Return the manufacturer value */ }
-        inline void setManufacturer(string manufacturer) { /* Update the manufacturer value */ }
-        inline double getPrice() { /* Return the price value */ }
-        inline void setPrice(double price) { /* Update the price value */ }
-        inline string getColor() { /* Return the color value */ }
-        inline void setColor(string color) { /* Update the color value */ }
+        inline string getManufacturer() { return this->manufacturer;/* Return the manufacturer value */ }
+        inline void setManufacturer(string manufacturer) { this->manufacturer = manufacturer;/* Update the manufacturer value */ }
+        inline double getPrice() { return this->price;/* Return the price value */ }
+        inline void setPrice(double price) { this->price = price;/* Update the price value */ }
+        inline string getColor() { return this->color;/* Return the color value */ }
+        inline void setColor(string color) { this->color = color;/* Update the color value */ }
         friend ostream& operator<<(ostream&, const Laptop&);
 };
 
@@ -143,7 +143,7 @@ class Roster {
         vector<Student> studentList;
     public:
         Roster(const char*);
-        inline vector<Student> getStudentList() { /* Update the studentList vector */ }
+        inline vector<Student> getStudentList() { return this->studentList;/* Update the studentList vector */ }
         friend ostream& operator<<(ostream&, const Roster&);
 };
 
