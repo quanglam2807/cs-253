@@ -3,7 +3,7 @@
 #ifndef HOURLYEMPLOYEE_H
 #define HOURLYEMPLOYEE_H
 
-class HourlyEmployee : public Employee {
+class HourlyEmployee: public Employee {
     private:
         double rate;
         double hours;

@@ -7,8 +7,29 @@ void readCompanyFromFile(string filename) {
     vector<SalariedEmployee> se_vec = vector<SalariedEmployee>();
     vector<HourlyEmployee> he_vec = vector<HourlyEmployee>();
     ifstream infile(filename.c_str());
-    while (!infile.eof()) {
+    string line;
+    while (getline(infile, line)) {
         // Create either an Hourly or a Salaried employee from each line
+        stringstream linestream(line);
+        
+        string name;
+        string department;
+        string param1;
+        string param2;
+
+        getline(linestream, name, ',');
+        getline(linestream, department, ',');
+        getline(linestream, param1, ',');
+        getline(linestream, param2, ',');
+
+        // Salaried
+        if (param2.length() == 0) {
+            SalariedEmployee se = SalariedEmployee(name, department, ::atof(param1.c_str()));
+            se_vec.push_back(se);
+        } else { // Hourly
+            HourlyEmployee he = HourlyEmployee(name, department, ::atof(param1.c_str()), ::atof(param2.c_str()));
+            he_vec.push_back(he);
+        }
     }
     cout << "Salaried Employees" << endl;
     for (SalariedEmployee se: se_vec) {
