@@ -9,5 +9,6 @@ Animal::Animal(string name, int age, string habitat) {
 
 ostream& operator<<(ostream& os, const Animal& a) {
     // TODO: implement the operator overload
+    os << a.getAge() << " years old " << a.getName() << " says " << a.sound() << " and " << a.move() << " back to " << a.getHabitat();
     return os;
 }
