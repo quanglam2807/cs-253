@@ -1,7 +1,7 @@
 #include "Employee.hpp"
 
 // TODO: Implement member functions of the class Employee
-Employee::Employee(string name, string department): name(name), department(department) {}
+Employee::Employee(string name, string department): name(name), department(department), weeklyPayment(0) {}
 
 Employee::Employee(const Employee& another): 
     name(another.name), 
@@ -16,6 +16,6 @@ void Employee::setWeeklyPayment(double _weeklyPayment) { weeklyPayment = _weekly
 
 ostream& operator<<(ostream& os, const Employee& e) {
     // TODO: Send data members to the stream os
-    os << e.name << " from " << e.department;
+    os << e.name << " from " << e.department << " earned $" << fixed << setprecision(2) << e.getWeeklyPayment() << " this week";
     return os;
 }
