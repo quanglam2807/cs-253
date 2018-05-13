@@ -1,7 +1,7 @@
 /*
  * Assignment: Exercise 11
- * Author: Roman Yasinovskyy
- * Date: 2018-05-08
+ * Author: Quang Lam
+ * Date: 2018-05-12
  */
 #ifndef EXERCISE11_H
 #define EXERCISE11_H
