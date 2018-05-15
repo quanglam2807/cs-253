@@ -6,13 +6,42 @@
 #ifndef EXERCISE13_H
 #define EXERCISE13_H
 
-#include <cstring>
+#include <cmath>
 #include <cstdlib>
+#include <cstring>
+#include <ctime>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+#include <limits>
 
 using namespace std;
+
+// Year	Winner	Result	Runner-up
+class Final {
+    private:
+        int year;
+        string winner;
+        string result;
+        string runnerUp;
+    public:
+        /* Constructors */
+        Final(int year, string winner, string result, string runnerUp);
+        /* Getters */
+        inline int getYear() const { return year; }
+        inline string getWinner() const { return winner; }
+        inline string getResult() const { return result; }
+        inline string getRunnerUp() const { return runnerUp; }
+};
+
+// Custom
+vector<Final> getFinals(string);
+map<string, int> getAppearancesMap(vector<Final>);
+map<string, int> getWinsMap(vector<Final>);
+map<string, int> getLossesMap(vector<Final>);
 
 // A team with the most appearances in the final
 string mostAppearances(string);
