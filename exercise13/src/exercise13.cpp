@@ -326,7 +326,5 @@ string secondBest(string fileName) {
         }
     }
 
-    cout << res << ": " << resCount << endl;
-
     return res;
 }
