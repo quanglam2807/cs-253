@@ -13,6 +13,8 @@ vector<Final> getFinals(string filename) {
 
     vector<Final> finals;
 
+    getline(fileIn, line);
+
     while(getline(fileIn, line)) {
         stringstream linestream(line);
 
@@ -307,18 +309,24 @@ string longestLosingSequence(string fileName) {
 string secondBest(string fileName) {
     vector<Final> finals = getFinals(fileName);
 
-    map<string, int> m = getWinsMap(finals);
+    map<string, int> mw = getWinsMap(finals);
+    map<string, int> ma = getAppearancesMap(finals);
 
     string firstBest = mostWins(fileName);
 
     string res = "";
     int resCount = 0;
-    for (auto const& it: m) {
-        if (it.second > resCount && it.first != firstBest) {
-            resCount = it.second;
-            res = it.first;
+    for (auto const& it: mw) {
+        if (it.first != firstBest) {
+            if (it.second > resCount || 
+            (it.second == resCount && ma[it.first] > ma[res])) {
+                resCount = it.second;
+                res = it.first;
+            }
         }
     }
+
+    cout << res << ": " << resCount << endl;
 
     return res;
 }
