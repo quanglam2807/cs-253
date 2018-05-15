@@ -252,6 +252,8 @@ string longestWinningSequence(string fileName) {
     int resSeq = 0;
     string res = "";
 
+    map<string, int> m = getWinsMap(finals);
+
     for (Final f:finals) {
         if (lastTeam == f.getWinner()) {
             seq = seq + 1;
@@ -260,7 +262,9 @@ string longestWinningSequence(string fileName) {
             lastTeam = f.getWinner();
         }
 
-        if (seq > resSeq) {
+        if (seq > resSeq || (
+            seq == resSeq && m[lastTeam] > m[res]
+        )) {
             resSeq = seq;
             res = lastTeam;
         }
@@ -279,6 +283,8 @@ string longestLosingSequence(string fileName) {
     int resSeq = 0;
     string res = "";
 
+    map<string, int> m = getLossesMap(finals);
+
     for (Final f:finals) {
         if (lastTeam == f.getRunnerUp()) {
             seq = seq + 1;
@@ -287,7 +293,9 @@ string longestLosingSequence(string fileName) {
             lastTeam = f.getRunnerUp();
         }
 
-        if (seq > resSeq) {
+        if (seq > resSeq || (
+            seq == resSeq && m[lastTeam] > m[res]
+        )) {
             resSeq = seq;
             res = lastTeam;
         }
